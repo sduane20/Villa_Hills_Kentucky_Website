@@ -1,5 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&display=swap');
+
+
 * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+}
+
+:root {
+    --delta-blue: #003865;
+    --second-blue: #70BFFF;
+    --third-blue: #D6EDFF;
+    --main-white: #fefefe;
+    --main-gray: #555555;
+    --main-black: #000000;
+}
+
+@supports (color: color(display-p3 1 1 1)) {
+    :root {
+        --delta-blue: color(display-p3 0.000000 0.219608 0.396078 / 1.000000);
+        --second-blue: color(display-p3 0.439216 0.749020 1.000000 / 1.000000);
+        --third-blue: color(display-p3 0.839216 0.929412 1.000000 / 1.000000);
+        --main-white: color(display-p3 0.996078 0.996078 0.996078 / 1.000000);
+        --main-gray: color(display-p3 0.333333 0.333333 0.333333 / 1.000000);
+        --main-black: color(display-p3 0.000000 0.000000 0.000000 / 1.000000);
+    }
+}
+#skip-to-main-content-link {
+    position: absolute;
+    left: -9999px;
+    z-index: 999;
+    padding: 1em;
+    background: var(--main-black);
+    color: var(--main-white);
+    opacity: 0;
+}
+
+#skip-to-main-content-link:focus {
+    left: 50%;
+    transform: translate(-50%);
+    opacity: 1;
+}
+
+body {
+    font-family: "Playfair";
+    display: grid;
+    grid-template-areas: 
+    "head head head"
+    "content content content"
+    "footer footer footer";
+    grid-template-rows: 80px 1fr 80px;
+    grid-template-columns: 1fr 4fr 1fr;
+    height: 100vh;
+}
+
+header {
+    grid-area: head;
+    background: linear-gradient(135deg, var(--delta-blue), var(--second-blue));
+    position: sticky;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1rem;
+}
+
+main {
+    grid-area: content;
+    background: var(--main-gray);
+}
+
+footer {
+    grid-area: footer;
+    background: linear-gradient(135deg, var(--delta-blue), var(--second-blue)); 
+    display: grid;
+    place-content: center;
+    color: var(--main-white);
+
+}
+
+#logo img {
+    width: 5rem;
+    height: 5rem;
+    margin: auto 1rem;
+}
+
+
+
+@media screen and (max-width: 768px) {
+    body {
+        grid-template-rows: 80px 1fr 100px;
+        grid-template-columns: 1fr;
+        grid-template-areas: 
+        "head"
+        "content"
+        "footer";
+    }
 }
